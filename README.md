@@ -1,5 +1,7 @@
 # FlaskBB
 
+test
+
 [![Build Status](https://github.com/flaskbb/flaskbb/actions/workflows/tests.yml/badge.svg)](https://github.com/flaskbb/flaskbb/actions/workflows/tests.yml)
 [![codecov](https://codecov.io/gh/flaskbb/flaskbb/branch/master/graph/badge.svg)](https://codecov.io/gh/flaskbb/flaskbb)
 [![requires](https://requires.io/github/flaskbb/flaskbb/requirements.svg?branch=master)](https://requires.io/github/flaskbb/flaskbb/requirements/?branch=master)
