@@ -1,0 +1,23 @@
+name: actions
+
+on: [push, pull_request]
+
+jobs:
+  bt-product-release:
+    if: ${{ github.ref == 'refs/heads/main' }}  # 1
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to Aliyun Container Registry (ACR)
+      uses: aliyun/acr-login@v1
+      with:
+        login-server: registry.cn-shanghai.aliyuncs.com
+        region-id: cn-shanghai # 3
+        username: "${{ secrets.REGISTRY_USERNAME }}"
+        password: "${{ secrets.REGISTRY_PASSWORD }}"
+    - name: Build and Push Docker Image
+      env:
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        docker build -t registry.cn-shanghai.aliyuncs.com/bullettech_services/flaskbb:latest .
+        docker push registry.cn-shanghai.aliyuncs.com/bullettech_services/flaskbb:latest
