@@ -7,8 +7,6 @@ WORKDIR .
 
 RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip3 install -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
-RUN apt-get update
-RUN apt-get install vim
 
 EXPOSE 8080
 
