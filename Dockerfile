@@ -8,5 +8,7 @@ WORKDIR .
 RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip3 install -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
 
+EXPOSE 8080
 
+ENTRYPOINT ["flaskbb","--config","flaskbb.cfg" ,"run"]
 
