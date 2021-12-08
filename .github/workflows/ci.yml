@@ -19,7 +19,5 @@ jobs:
       env:
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        sudo apt-get update
-        sudo apt-get install vim
         docker build -t registry.cn-shanghai.aliyuncs.com/bullettech_services/flaskbb:latest .
         docker push registry.cn-shanghai.aliyuncs.com/bullettech_services/flaskbb:latest
