@@ -11,5 +11,4 @@ RUN apt-get update && apt-get install -y vim
 
 EXPOSE 8080
 
-ENTRYPOINT ["flaskbb","--config","flaskbb.cfg" ,"run"]
 
