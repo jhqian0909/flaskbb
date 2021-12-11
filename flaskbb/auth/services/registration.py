@@ -18,7 +18,7 @@ from flask_babelplus import gettext as _
 from flask_login import login_user
 from pytz import UTC
 from sqlalchemy import func
-
+from flaskbb.utils.helpers import render_template
 from ...core.auth.registration import (
     RegistrationPostProcessor,
     UserRegistrationService,
@@ -203,12 +203,16 @@ class RegistrationService(UserRegistrationService):
         try:
             self._validate_registration(user_info)
         except StopValidation as e:
-            self._handle_failure(user_info, e.reasons)
+            self._handle_failure(user_info, e.reasons) 
             raise
 
         user = self._store_user(user_info)
-        self._post_process(user)
-        return user
+        try:
+            self._post_process(user)
+            return user
+        except:
+            pass
+        
 
     def _validate_registration(self, user_info):
         failures = []

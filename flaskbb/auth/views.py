@@ -168,6 +168,7 @@ class Register(MethodView):
             )
 
             service = self.registration_service_factory()
+
             try:
                 service.register(registration_info)
             except StopValidation as e:
@@ -187,7 +188,7 @@ class Register(MethodView):
             current_app.pluggy.hook.flaskbb_event_user_registered(
                 username=registration_info.username
             )
-            return redirect_or_next(url_for('forum.index'))
+            return redirect_or_next(url_for('forum.index')) 
 
         return render_template("auth/register.html", form=form)
 

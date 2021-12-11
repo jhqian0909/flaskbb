@@ -122,14 +122,15 @@ class BlockUnactivatedUser(PostAuthenticationHandler):
     """
 
     def handle_post_auth(self, user):
-        if not user.activated:  # pragma: no branch
-            raise StopAuthentication(
-                _(
-                    "In order to use your account you have to "
-                    "activate it through the link we have sent to "
-                    "your email address."
-                )
-            )
+        pass
+        # if not user.activated:  # pragma: no branch
+        #     raise StopAuthentication(
+        #         _(
+        #             "In order to use your account you have to "
+        #             "activate it through the link we have sent to "
+        #             "your email address."
+        #         )
+        #     )
 
 
 class ClearFailedLogins(PostAuthenticationHandler):

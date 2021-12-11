@@ -171,7 +171,7 @@ class User(db.Model, UserMixin, CRUDMixin):
         if flaskbb_config["ACTIVATE_ACCOUNT"]:
             if self.activated:
                 return True
-            return False
+            return True #False
 
         return True
 
