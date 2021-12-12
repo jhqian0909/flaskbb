@@ -1,0 +1,33 @@
+{% set page_title = _("MysteryBox") %}
+
+{% extends theme("layout.html") %}
+{% block content %}
+{% from theme("_macros/form.html") import horizontal_field %}
+
+<div class="page-view">
+    <ol class="breadcrumb flaskbb-breadcrumb bg-light">
+        <li class="breadcrumb-item"><a href="{{ url_for('forum.index') }}">{% trans %}Forum{% endtrans %}</a></li>
+        <li class="breadcrumb-item active">{% trans %}MysteryBox{% endtrans %}</li>
+    </ol>
+
+    <div class="card page">
+        <div class="card-header page-header">
+            {% trans %}MysteryBox{% endtrans %}
+        </div>
+        <center>
+        <div class="card-container">
+            <div class="cover">COVER</div>          
+            <div class="back">
+                <div class="box-back-inner">
+                    <p style="text-align:center;">{{ picked.username }}</p>
+                    <img src="https://cdn.jsdelivr.net/gh/BulletTech2021/Pics/img/summary.jpg" alt="avatar" width=150 height=150>    
+                </div>
+            </div>           
+        </div>
+        </center>
+
+    </div>
+</div>
+
+{% endblock %}
+

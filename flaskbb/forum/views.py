@@ -11,7 +11,7 @@
 """
 import logging
 import math
-
+import random
 from flask import (Blueprint, abort, current_app, flash, redirect, request,
                    url_for)
 from flask.views import MethodView
@@ -739,6 +739,14 @@ class Search(MethodView):
 
         return render_template("forum/search_form.html", form=form)
 
+class Box(MethodView):
+
+    def get(self):
+        users=User.query.all() #with_entities(User.username, User.avatar)
+        random.shuffle(users)
+        picked=users[0]
+        return render_template("forum/box.html", picked=picked)
+
 
 class DeleteTopic(MethodView):
     decorators = [
@@ -1188,6 +1196,11 @@ def flaskbb_load_blueprints(app):
         forum,
         routes=["/search"],
         view_func=Search.as_view("search")
+    )
+    register_view(
+        forum,
+        routes=["/box"],
+        view_func=Box.as_view("box")
     )
     register_view(
         forum,

@@ -99,8 +99,8 @@ def flaskbb_gather_registration_validators():
     )
 
     return [
-        EmailUniquenessValidator(User),
-        UsernameUniquenessValidator(User),
+        # EmailUniquenessValidator(User),
+        # UsernameUniquenessValidator(User),
         UsernameValidator(requirements),
     ]
 
