@@ -748,6 +748,18 @@ class Box(MethodView):
         return render_template("forum/box.html", picked=picked)
 
 
+class RegisterGetname(MethodView):
+    
+    def get(self):
+        from flask import jsonify
+        import random
+
+        n1=['古灵精怪','好吃懒做']
+        n2=['精灵','肥宅']
+        name=random.choice(n1)+'的'+random.choice(n2)
+
+        return jsonify(name=name)
+
 class DeleteTopic(MethodView):
     decorators = [
         login_required,
@@ -1321,6 +1333,13 @@ def flaskbb_load_blueprints(app):
             "/markdown/<path:mode>"
         ],
         view_func=MarkdownPreview.as_view("markdown_preview")
+    )
+    register_view(
+        forum,
+        routes=[
+            "/register/get_name"
+        ],
+        view_func=RegisterGetname.as_view("register_getname")
     )
 
     forum.before_request(force_login_if_needed)
